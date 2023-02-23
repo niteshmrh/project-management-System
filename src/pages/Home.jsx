@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import UpdateIcon from "@mui/icons-material/Update";
+// import UpdateIcon from "@mui/icons-material/Update";
 import Loader from "../components/Loader";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { NavLink } from "react-router-dom";
 
 function Home(props) {
   const [personData, setPersonData] = useState([]);
@@ -88,7 +90,7 @@ function Home(props) {
               </thead>
               <tbody>
                 {personData.map((person) => (
-                  <tr className="person-lists" key={person.id}>
+                  <tr className="person-lists" key={person.personId}>
                     <td>{person.Name}</td>
                     <td>{person.Email}</td>
                     <td>{person.Mobile}</td>
@@ -103,9 +105,11 @@ function Home(props) {
                       </button>
                     </td>
                     <td>
-                      <button className="btn btn-primary">
-                        <UpdateIcon />
-                      </button>
+                      <NavLink to={`${person.personId}`}>
+                        <button className="btn btn-primary">
+                          <BorderColorIcon />
+                        </button>
+                      </NavLink>
                     </td>
                   </tr>
                 ))}

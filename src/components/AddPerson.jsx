@@ -88,7 +88,7 @@ function AddPerson(props) {
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                   <label className="form-label">Phone</label>
                   <input
                     type="text"
@@ -98,7 +98,7 @@ function AddPerson(props) {
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                   <label className="form-label">Pan</label>
                   <input
                     type="text"
@@ -108,7 +108,7 @@ function AddPerson(props) {
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
-                <div className="mb-4">
+                <div className="mb-3">
                   <label className="form-label">Aadhar</label>
                   <input
                     type="text"
@@ -118,7 +118,8 @@ function AddPerson(props) {
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
-                <div className="modal-footer">
+                {/* className="modal-footer" */}
+                <div>
                   {isFormSubmit ? (
                     <button type="submit" className="btn btn-primary">
                       Submmiting....
