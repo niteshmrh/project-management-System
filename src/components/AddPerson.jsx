@@ -25,6 +25,8 @@ function AddPerson(props) {
               Pan: formData.Pan,
               Mobile: formData.Mobile,
               Aadhar: formData.Aadhar,
+              // Current_Time: Date(),
+              // Updated_Time: Date(),
             },
           ],
         },
@@ -73,6 +75,7 @@ function AddPerson(props) {
                     type="text"
                     className="form-control"
                     name="Name"
+                    placeholder="Enter Name"
                     // value={formData.name}
                     // onChange={(e) => console.log(e.target.value)}
                     onChange={(e) => handleChange(e)}
@@ -83,6 +86,7 @@ function AddPerson(props) {
                   <input
                     type="email"
                     name="Email"
+                    placeholder="Enter Mail"
                     // value={formData.email}
                     className="form-control"
                     onChange={(e) => handleChange(e)}
@@ -93,6 +97,7 @@ function AddPerson(props) {
                   <input
                     type="text"
                     name="Mobile"
+                    placeholder="+91"
                     // value={formData.phone}
                     className="form-control"
                     onChange={(e) => handleChange(e)}
@@ -103,6 +108,7 @@ function AddPerson(props) {
                   <input
                     type="text"
                     name="Pan"
+                    placeholder="Enter PAN Number"
                     // value={formData.phone}
                     className="form-control"
                     onChange={(e) => handleChange(e)}
@@ -113,6 +119,7 @@ function AddPerson(props) {
                   <input
                     type="text"
                     name="Aadhar"
+                    placeholder="Enter Aadhar Card"
                     // value={formData.phone}
                     className="form-control"
                     onChange={(e) => handleChange(e)}

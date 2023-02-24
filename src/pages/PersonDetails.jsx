@@ -9,6 +9,8 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import BrandingWatermarkIcon from "@mui/icons-material/BrandingWatermark";
 import Loader from "../components/Loader";
 import UpadtePerson from "../components/UpadtePerson";
+import UpdateIcon from "@mui/icons-material/Update";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 
 function PersonDetails(props) {
   const { id } = useParams();
@@ -77,6 +79,7 @@ function PersonDetails(props) {
                       {person[0].Name}
                       <span className="float-end fw-lighter">Name</span>
                     </li>
+
                     <li className="list-group-item">
                       <MailOutlineIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
@@ -84,6 +87,7 @@ function PersonDetails(props) {
                       {person[0].Email}
                       <span className="float-end fw-lighter">Email</span>
                     </li>
+
                     <li className="list-group-item">
                       <CallIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
@@ -91,6 +95,7 @@ function PersonDetails(props) {
                       {person[0].Mobile}
                       <span className="float-end fw-lighter">Phone</span>
                     </li>
+
                     <li className="list-group-item">
                       <PaymentIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
@@ -98,12 +103,29 @@ function PersonDetails(props) {
                       {person[0].Pan}
                       <span className="float-end fw-lighter">Pan </span>
                     </li>
+
                     <li className="list-group-item">
                       <BrandingWatermarkIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
                       />
                       {person[0].Aadhar}
                       <span className="float-end fw-lighter">Aadhar</span>
+                    </li>
+
+                    <li className="list-group-item">
+                      <QueryBuilderIcon
+                        style={{ fontSize: "22px", marginRight: "8px" }}
+                      />
+                      {person[0].Created_Time}
+                      <span className="float-end fw-lighter">Created On</span>
+                    </li>
+
+                    <li className="list-group-item">
+                      <QueryBuilderIcon
+                        style={{ fontSize: "22px", marginRight: "8px" }}
+                      />
+                      {person[0].Updated_Time}
+                      <span className="float-end fw-lighter">Updated On</span>
                     </li>
                   </ul>
                 </div>
@@ -118,6 +140,9 @@ function PersonDetails(props) {
                   data-bs-target="#updateperson"
                   //   id={id}
                 >
+                  <UpdateIcon
+                    style={{ fontSize: "22px", marginRight: "8px" }}
+                  />
                   Update
                 </button>
               </div>
