@@ -36,3 +36,9 @@ label {
 .linker{
   text-decoration: none;
 }
+
+
+.errors{
+  color: red;
+  font-weight: bold;
+}

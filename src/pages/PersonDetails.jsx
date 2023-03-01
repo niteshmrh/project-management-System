@@ -43,7 +43,8 @@ function PersonDetails(props) {
       console.log(error);
     }
   };
-  console.log("Person Details", person);
+  // console.log("Person Details------", person);
+  // console.log("Person Details[0]------", person[0]);
   //   console.log(person.length);
   if (isLoading) {
     <Loader />;

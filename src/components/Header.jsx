@@ -16,7 +16,7 @@ function Header(props) {
                     alt="Logo"
                     width={69}
                     height={55}
-                    marginRight="14px"
+                    margin-right={14}
                     className="d-inline-block align-text-top"
                   />
                   <span className="ms-3 mb-3 fs-10">Employee Management</span>
@@ -31,6 +31,11 @@ function Header(props) {
                 >
                   Add Person
                 </button>
+                <NavLink to="/addnewperson">
+                  <button type="button" className="btn btn-primary ms-3">
+                    Add New Person
+                  </button>
+                </NavLink>
                 {/* <button
                   type="button"
                   className="btn btn-success ms-3"

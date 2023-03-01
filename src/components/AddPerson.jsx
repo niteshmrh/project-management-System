@@ -1,52 +1,74 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+
+import * as Yup from "yup";
+
+const initialValues = {
+  Name: "",
+  Email: "",
+  Mobile: "",
+  Pan: "",
+  Aadhar: "",
+};
+
+const onSubmit = async (values) => {
+  console.log("Submitted", values);
+  // console.log("Submitted name ----", values.Name);
+  try {
+    // setIsFormSubmit(true);
+    const response = await axios.post(
+      "http://localhost:3000/api/person",
+      {
+        Name: values.Name,
+        Email: values.Email,
+        Pan: values.Pan,
+        Mobile: values.Mobile,
+        Aadhar: values.Aadhar,
+      },
+
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // console.log("respone---", response);
+    if (response.status === 201) {
+      // setIsFormSubmit(false);
+      window.location = "/";
+    } else {
+      alert("Something went Wrong !!!");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const validationSchema = Yup.object({
+  Name: Yup.string().required("Required"),
+  Email: Yup.string()
+    .matches(/^[a-z0-9](.?[a-z0-9]*){5,}@g(oogle)?mail.com$/)
+    .required("Enter valid Email "),
+  Mobile: Yup.string()
+    .matches(/^[+]{1}[9]{1}[1]{1}[9876][0-9]{9}$/)
+    .required("Enter valid Mobile Number"),
+  Pan: Yup.string()
+    .matches(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)
+    .required("Enter Valid Pan Number"),
+  Aadhar: Yup.string()
+    .matches(/^[0-9]{12}$/)
+    .required("Enter valid Aadhar Number"),
+});
 
 function AddPerson(props) {
-  const [formData, setFormData] = useState({});
+  // const [formData, setFormData] = useState({});
   const [isFormSubmit, setIsFormSubmit] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  //   console.log(formData);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(formData);
-    try {
-      setIsFormSubmit(true);
-      const response = await axios.post(
-        "http://localhost:3000/api/person",
-        {
-          data: [
-            {
-              Name: formData.Name,
-              Email: formData.Email,
-              Pan: formData.Pan,
-              Mobile: formData.Mobile,
-              Aadhar: formData.Aadhar,
-              // Current_Time: Date(),
-              // Updated_Time: Date(),
-            },
-          ],
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("respone---", response);
-      if (response.status === 201) {
-        setIsFormSubmit(false);
-        window.location = "/";
-      } else {
-        alert("Something went Wrong !!!");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // console.log("Form Value", formik.values);
+  // console.log("Form errors", formik.errors);
+  // console.log("Visited one", formik.touched);
+  // console.log("form Data-----", formData);
 
   return (
     <div className="modal-dialog modal-dialog-scrollable">
@@ -68,76 +90,86 @@ function AddPerson(props) {
               />
             </div>
             <div className="modal-body">
-              <form onSubmit={(e) => handleSubmit(e)}>
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="Name"
-                    placeholder="Enter Name"
-                    // value={formData.name}
-                    // onChange={(e) => console.log(e.target.value)}
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Email</label>
-                  <input
-                    type="email"
-                    name="Email"
-                    placeholder="Enter Mail"
-                    // value={formData.email}
-                    className="form-control"
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Phone</label>
-                  <input
-                    type="text"
-                    name="Mobile"
-                    placeholder="+91"
-                    // value={formData.phone}
-                    className="form-control"
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Pan</label>
-                  <input
-                    type="text"
-                    name="Pan"
-                    placeholder="Enter PAN Number"
-                    // value={formData.phone}
-                    className="form-control"
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Aadhar</label>
-                  <input
-                    type="text"
-                    name="Aadhar"
-                    placeholder="Enter Aadhar Card"
-                    // value={formData.phone}
-                    className="form-control"
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
-                {/* className="modal-footer" */}
-                <div>
-                  {isFormSubmit ? (
-                    <button type="submit" className="btn btn-primary">
-                      Submmiting....
-                    </button>
-                  ) : (
-                    <button type="submit" className="btn btn-primary">
-                      Submit
-                    </button>
-                  )}
-                </div>
-              </form>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+              >
+                <Form>
+                  <div className="mb-2">
+                    <label className="form-label">Name</label>
+                    <Field
+                      type="text"
+                      name="Name"
+                      placeholder="Enter Name"
+                      className="form-control"
+                    />
+                    <ErrorMessage name="Name">
+                      {(ErrorMsg) => <div className="errors">{ErrorMsg}</div>}
+                    </ErrorMessage>
+                  </div>
+                  <div className="mb-2">
+                    <label className="form-label">Email</label>
+                    <Field
+                      type="email"
+                      name="Email"
+                      placeholder="Enter Mail"
+                      className="form-control"
+                    />
+                    <ErrorMessage name="Email">
+                      {(ErrorMsg) => <div className="errors">{ErrorMsg}</div>}
+                    </ErrorMessage>
+                  </div>
+                  <div className="mb-2">
+                    <label className="form-label">Phone</label>
+                    <Field
+                      type="text"
+                      name="Mobile"
+                      placeholder="+91"
+                      className="form-control"
+                    />
+                    <ErrorMessage name="Mobile">
+                      {(ErrorMsg) => <div className="errors">{ErrorMsg}</div>}
+                    </ErrorMessage>
+                  </div>
+                  <div className="mb-2">
+                    <label className="form-label">Pan</label>
+                    <Field
+                      type="text"
+                      name="Pan"
+                      placeholder="Enter PAN Number"
+                      className="form-control"
+                    />
+                    <ErrorMessage name="Pan">
+                      {(ErrorMsg) => <div className="errors">{ErrorMsg}</div>}
+                    </ErrorMessage>
+                  </div>
+                  <div className="mb-2">
+                    <label className="form-label">Aadhar</label>
+                    <Field
+                      type="text"
+                      name="Aadhar"
+                      placeholder="Enter Aadhar Card"
+                      className="form-control"
+                    />
+                    <ErrorMessage name="Aadhar">
+                      {(ErrorMsg) => <div className="errors">{ErrorMsg}</div>}
+                    </ErrorMessage>
+                  </div>
+                  {/* className="modal-footer" */}
+                  <div>
+                    {isFormSubmit ? (
+                      <button type="submit" className="btn btn-primary">
+                        Submmiting....
+                      </button>
+                    ) : (
+                      <button type="submit" className="btn btn-primary">
+                        Submit
+                      </button>
+                    )}
+                  </div>
+                </Form>
+              </Formik>
             </div>
           </div>
         </div>
