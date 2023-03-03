@@ -44,7 +44,7 @@ function PersonDetails(props) {
     }
   };
   // console.log("Person Details------", person);
-  // console.log("Person Details[0]------", person[0]);
+  console.log("Person Details[0]------", person[0]);
   //   console.log(person.length);
   if (isLoading) {
     <Loader />;
@@ -73,6 +73,17 @@ function PersonDetails(props) {
                 <div className="mt-5">
                   <h5 className="mb-3">Person Information</h5>
                   <ul className="list-group">
+                    <li className="list-group-item">
+                      <img
+                        className="r"
+                        src={person[0].Photo}
+                        alt="Add image"
+                        width="25%"
+                        height="35%"
+                        style={{ marginLeft: "150px", borderRadius: "50%" }}
+                      />
+                      <span className="float-end fw-lighter">Image</span>
+                    </li>
                     <li className="list-group-item">
                       <AccountCircleIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}

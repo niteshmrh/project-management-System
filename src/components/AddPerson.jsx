@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { NavLink } from "react-router-dom";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 
 import * as Yup from "yup";
 
@@ -10,11 +12,12 @@ const initialValues = {
   Mobile: "",
   Pan: "",
   Aadhar: "",
+  Photo: "",
 };
 
 const onSubmit = async (values) => {
   console.log("Submitted", values);
-  // console.log("Submitted name ----", values.Name);
+  console.log("Submitted name ----", values.Name);
   try {
     // setIsFormSubmit(true);
     const response = await axios.post(
@@ -25,6 +28,7 @@ const onSubmit = async (values) => {
         Pan: values.Pan,
         Mobile: values.Mobile,
         Aadhar: values.Aadhar,
+        Photo: values.Photo,
       },
 
       {
@@ -157,6 +161,20 @@ function AddPerson(props) {
                     </ErrorMessage>
                   </div>
                   {/* className="modal-footer" */}
+                  <div className="mb-2">
+                    <label className="form-label">Upload Image</label>
+                    <Field
+                      type="file"
+                      name="Photo"
+                      placeholder="Enter Image in jpg/jpeg"
+                      className="form-control"
+                    />
+                    {/* <NavLink to="/camera">
+                      <button className="btn btn-primary">
+                        <CameraAltIcon />
+                      </button>
+                    </NavLink> */}
+                  </div>
                   <div>
                     {isFormSubmit ? (
                       <button type="submit" className="btn btn-primary">

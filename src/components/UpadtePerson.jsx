@@ -13,6 +13,7 @@ function UpadtePerson(props) {
   const [isLoading, setIsLoading] = useState(true);
   // console.log("props---", props, id);
   // console.log("person-----", user);
+  const user = props.person;
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +25,8 @@ function UpadtePerson(props) {
     },
     enableReinitialize: true,
     onSubmit: async (values) => {
-      // console.log("Submitted", values, id, values.Name);
+      console.log("Submitted", values, id, values.Name);
+      // values.preventDefault();
       try {
         setIsLoading(true);
         const response = await axios.put(

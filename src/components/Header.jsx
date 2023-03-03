@@ -31,11 +31,7 @@ function Header(props) {
                 >
                   Add Person
                 </button>
-                <NavLink to="/addnewperson">
-                  <button type="button" className="btn btn-primary ms-3">
-                    Add New Person
-                  </button>
-                </NavLink>
+
                 {/* <button
                   type="button"
                   className="btn btn-success ms-3"
