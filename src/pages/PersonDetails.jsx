@@ -11,6 +11,7 @@ import Loader from "../components/Loader";
 import UpadtePerson from "../components/UpadtePerson";
 import UpdateIcon from "@mui/icons-material/Update";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 
 function PersonDetails(props) {
   const { id } = useParams();
@@ -46,6 +47,42 @@ function PersonDetails(props) {
   // console.log("Person Details------", person);
   console.log("Person Details[0]------", person[0]);
   //   console.log(person.length);
+
+  // function tyo convert into CSV
+
+  function convertToCsv(data) {
+    const headers = Object.keys(data[0]);
+    const csv = [
+      headers.join(","),
+      ...data.map((row) => headers.map((header) => row[header]).join(",")),
+    ].join("\n");
+    return csv;
+  }
+
+  // make file downloadable in CSV
+
+  function downloadData() {
+    const csv = convertToCsv(person);
+    const url = window.URL.createObjectURL(new Blob([csv]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "person.csv");
+    document.body.appendChild(link);
+    link.click();
+  }
+
+  // make file download in pdf
+
+  function downloadPdf() {
+    const pdfFile = convertToCsv(person);
+    const url = window.URL.createObjectURL(new Blob([pdfFile]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "file.pdf");
+    document.body.appendChild(link);
+    link.click();
+  }
+
   if (isLoading) {
     <Loader />;
   }
@@ -74,15 +111,19 @@ function PersonDetails(props) {
                   <h5 className="mb-3">Person Information</h5>
                   <ul className="list-group">
                     <li className="list-group-item">
-                      <img
-                        className="r"
-                        src={person[0].Photo}
-                        alt="Add image"
-                        width="25%"
-                        height="35%"
-                        style={{ marginLeft: "150px", borderRadius: "50%" }}
-                      />
-                      <span className="float-end fw-lighter">Image</span>
+                      <div className="justify-content-end">
+                        <img
+                          className="r"
+                          src={person[0].Photo}
+                          alt="Add image"
+                          width="25%"
+                          height="35%"
+                          style={{ marginLeft: "150px", borderRadius: "50%" }}
+                        />
+                        <span className="float-end fw-lighter text center">
+                          Image
+                        </span>
+                      </div>
                     </li>
                     <li className="list-group-item">
                       <AccountCircleIcon
@@ -144,20 +185,39 @@ function PersonDetails(props) {
               ) : (
                 <h1>Data Not Found</h1>
               )}
-              <div className="mt-3">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#updateperson"
-                  //   id={id}
-                >
-                  <UpdateIcon
-                    style={{ fontSize: "22px", marginRight: "8px" }}
-                  />
-                  Update
-                </button>
-              </div>
+              <ul className="d-flex flex-row justify-content-between col-md-12">
+                <li className="mt-3 list-group-item">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateperson"
+                    //   id={id}
+                  >
+                    <UpdateIcon
+                      style={{ fontSize: "22px", marginRight: "8px" }}
+                    />
+                    Update
+                  </button>
+                </li>
+                <li className="mt-3 list-group-item">
+                  <NavLink to={`/camera/${id}`}>
+                    <button className="btn btn-primary">
+                      <CameraAltIcon /> Update Photo
+                    </button>
+                  </NavLink>
+                </li>
+                <li className="mt-3 list-group-item">
+                  <button className="btn btn-success" onClick={downloadData}>
+                    Download CSV
+                  </button>
+                </li>
+                <li className="mt-3 list-group-item">
+                  <button className="btn btn-success" onClick={downloadPdf}>
+                    Download PDF
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

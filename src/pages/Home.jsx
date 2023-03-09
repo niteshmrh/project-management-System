@@ -50,6 +50,8 @@ function Home(props) {
     }
   };
 
+  // console.log(personData.photo.orignalname);
+
   const fetchPersonApiCount = async () => {
     try {
       // setLoading(true);

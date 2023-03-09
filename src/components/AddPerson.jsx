@@ -12,12 +12,22 @@ const initialValues = {
   Mobile: "",
   Pan: "",
   Aadhar: "",
-  Photo: "",
+  // Photo: "",
 };
+
+// let formData = new FormData();
 
 const onSubmit = async (values) => {
   console.log("Submitted", values);
-  console.log("Submitted name ----", values.Name);
+
+  // console.log("Submitted name ----", values.Name);
+  // formData.append("Name", values.Name);
+  // formData.append("Email", values.Email);
+  // formData.append("Pan", values.Pan);
+  // formData.append("Mobile", values.Mobile);
+  // formData.append("Aadhar", values.Aadhar);
+  // formData.append("Photo", values.Photo);
+
   try {
     // setIsFormSubmit(true);
     const response = await axios.post(
@@ -28,16 +38,17 @@ const onSubmit = async (values) => {
         Pan: values.Pan,
         Mobile: values.Mobile,
         Aadhar: values.Aadhar,
-        Photo: values.Photo,
+        // Photo: values.Photo,
       },
 
       {
         headers: {
           "Content-Type": "application/json",
+          // "Content-Type": "multipart/form-data",
         },
       }
     );
-    // console.log("respone---", response);
+    console.log("respone---", response);
     if (response.status === 201) {
       // setIsFormSubmit(false);
       window.location = "/";
@@ -161,7 +172,7 @@ function AddPerson(props) {
                     </ErrorMessage>
                   </div>
                   {/* className="modal-footer" */}
-                  <div className="mb-2">
+                  {/* <div className="mb-2">
                     <label className="form-label">Upload Image</label>
                     <Field
                       type="file"
@@ -169,12 +180,12 @@ function AddPerson(props) {
                       placeholder="Enter Image in jpg/jpeg"
                       className="form-control"
                     />
-                    {/* <NavLink to="/camera">
+                    <NavLink to="/camera">
                       <button className="btn btn-primary">
                         <CameraAltIcon />
                       </button>
-                    </NavLink> */}
-                  </div>
+                    </NavLink> 
+                  </div> */}
                   <div>
                     {isFormSubmit ? (
                       <button type="submit" className="btn btn-primary">

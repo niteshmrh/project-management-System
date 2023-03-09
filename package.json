@@ -19,6 +19,7 @@
     "react-paginate": "^8.1.4",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-use-face-detection": "^1.0.1",
     "react-webcam": "^7.0.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.0.1"
