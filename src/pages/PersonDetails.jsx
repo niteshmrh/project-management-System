@@ -12,6 +12,8 @@ import UpadtePerson from "../components/UpadtePerson";
 import UpdateIcon from "@mui/icons-material/Update";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import html2PDF from "jspdf-html2canvas";
+import { saveAs } from "file-saver";
 
 function PersonDetails(props) {
   const { id } = useParams();
@@ -44,11 +46,50 @@ function PersonDetails(props) {
       console.log(error);
     }
   };
-  // console.log("Person Details------", person);
-  console.log("Person Details[0]------", person[0]);
-  //   console.log(person.length);
 
-  // function tyo convert into CSV
+  // console.log("Person Details[0]------", person[0]);
+  // console.log("Person Details------", person);
+  // console.log(person.length);
+
+  //***************** posting url for download current webpage *************************
+
+  const postUrlToApi = async () => {
+    var myurl = `http://localhost:3001/${id}`;
+    console.log(id);
+    console.log("downloading----", myurl);
+    const response = await axios
+      .post(
+        "http://localhost:3000/api/person/download",
+
+        {
+          url: myurl,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(() =>
+        axios
+          .get("http://localhost:3000/api/person/download/fetch-pdf", {
+            responseType: "blob",
+          })
+          .then((res) => {
+            const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+            console.log("hittt get-----", pdfBlob);
+            saveAs(pdfBlob, `${person[0].Name}.pdf`);
+          })
+      );
+
+    if (response.status === 200) {
+      console.log("Downloading........... ");
+    } else {
+      alert("Something went wrong!!!");
+    }
+  };
+
+  // function to convert into CSV and download file
 
   function convertToCsv(data) {
     const headers = Object.keys(data[0]);
@@ -73,15 +114,15 @@ function PersonDetails(props) {
 
   // make file download in pdf
 
-  function downloadPdf() {
-    const pdfFile = convertToCsv(person);
-    const url = window.URL.createObjectURL(new Blob([pdfFile]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "file.pdf");
-    document.body.appendChild(link);
-    link.click();
-  }
+  // function downloadPdf() {
+  //   const pdfFile = convertToCsv(person);
+  //   const url = window.URL.createObjectURL(new Blob([pdfFile]));
+  //   const link = document.createElement("a");
+  //   link.href = "http://localhost:3001/1";
+  //   link.setAttribute("download", "file.pdf");
+  //   // document.body.appendChild(link);
+  //   link.click();
+  // }
 
   if (isLoading) {
     <Loader />;
@@ -89,7 +130,7 @@ function PersonDetails(props) {
 
   return (
     <div className="py-5">
-      <div className="container">
+      <div className="container" id="page">
         <div className="row">
           <div className="col-md-12">
             <div className="border p-3 rounded">
@@ -213,7 +254,8 @@ function PersonDetails(props) {
                   </button>
                 </li>
                 <li className="mt-3 list-group-item">
-                  <button className="btn btn-success" onClick={downloadPdf}>
+                  {/*    onClick={downloadPdf}*/}
+                  <button className="btn btn-success" onClick={postUrlToApi}>
                     Download PDF
                   </button>
                 </li>
