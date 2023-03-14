@@ -14,6 +14,7 @@ import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import html2PDF from "jspdf-html2canvas";
 import { saveAs } from "file-saver";
+import DownloadIcon from "@mui/icons-material/Download";
 
 function PersonDetails(props) {
   const { id } = useParams();
@@ -60,7 +61,6 @@ function PersonDetails(props) {
     const response = await axios
       .post(
         "http://localhost:3000/api/person/download",
-
         {
           url: myurl,
         },
@@ -250,13 +250,13 @@ function PersonDetails(props) {
                 </li>
                 <li className="mt-3 list-group-item">
                   <button className="btn btn-success" onClick={downloadData}>
-                    Download CSV
+                    <DownloadIcon /> Download CSV
                   </button>
                 </li>
                 <li className="mt-3 list-group-item">
                   {/*    onClick={downloadPdf}*/}
                   <button className="btn btn-success" onClick={postUrlToApi}>
-                    Download PDF
+                    <DownloadIcon /> Download PDF
                   </button>
                 </li>
               </ul>
