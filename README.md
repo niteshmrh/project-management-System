@@ -80,6 +80,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## While Adding person if any feild left then error occurs (Also used regular expression to validate the input feilds)
 <img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Add%20person%20error.png">
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Error_as.png">
 
 ## Person Details
 <img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/page%20details.png">
