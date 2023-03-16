@@ -15,8 +15,6 @@ import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import html2PDF from "jspdf-html2canvas";
 import { saveAs } from "file-saver";
 import DownloadIcon from "@mui/icons-material/Download";
-import DownloadIcon from "@mui/icons-material/Download";
-
 
 function PersonDetails(props) {
   const { id } = useParams();
