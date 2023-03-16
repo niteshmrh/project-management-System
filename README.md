@@ -68,3 +68,46 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+#Preview and Images
+
+## Home (Showing all person and three button `Delete`, `Details` and for `Camera` working as Named given)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Home.png">
+
+## Add person
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Add%20Person.png">
+
+## While Adding person if any feild left then error occurs (Also used regular expression to validate the input feilds)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Add%20person%20error.png">
+
+## Person Details
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/page%20details.png">
+
+## Person Details
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/page%20details1.png">
+
+## Update Person Details (giving previous givien data)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Update.png">
+
+## Update Person Details (giving previous givien data)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Update.png">
+
+## Downloading PDF
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Download_As_Pdf.png">
+
+## PDF Preview
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Pdf.png">
+
+## Camera (Timer, Clicked only when one face is detected)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/camera.png">
+
+
+## Camera (After Photo Clicked) (two button retake and submit)
+<img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/camera1.png">
+
+
+#DateBase
+<img src="https://github.com/niteshmrh/form/blob/24158c2ba48827cb957df85b87a3b2ee2a8579e9/Screenshot%20from%202023-03-16%2017-54-29.png">
+
+
