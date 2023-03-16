@@ -63,17 +63,20 @@ const onSubmit = async (values) => {
 const validationSchema = Yup.object({
   Name: Yup.string().required("Required"),
   Email: Yup.string()
-    .matches(/^[a-z0-9](.?[a-z0-9]*){5,}@g(oogle)?mail.com$/)
+    .matches(
+      /^[a-z0-9](.?[a-z0-9]*){5,}@g(oogle)?mail.com$/,
+      "exapmle@gmail.com"
+    )
     .required("Enter valid Email "),
   Mobile: Yup.string()
-    .matches(/^[+]{1}[9]{1}[1]{1}[9876][0-9]{9}$/)
+    .matches(/^[+]{1}[9]{1}[1]{1}[9876][0-9]{9}$/, "+91XXXXXXXXXX")
     .required("Enter valid Mobile Number"),
   Pan: Yup.string()
-    .matches(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)
+    .matches(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/, "XXXX0000X")
     .required("Enter Valid Pan Number"),
   Aadhar: Yup.string()
     .matches(/^[0-9]{12}$/)
-    .required("Enter valid Aadhar Number"),
+    .required("Enter valid Aadhar Number", "XXXXXXXXXXXX"),
 });
 
 function AddPerson(props) {

@@ -7,7 +7,7 @@ import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { NavLink } from "react-router-dom";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import ReactPaginate from "react-paginate";
-import { Pagination } from "@mui/material";
+// import { Pagination } from "@mui/material";
 
 function Home(props) {
   const [personData, setPersonData] = useState([]);
@@ -121,7 +121,7 @@ function Home(props) {
                   <th scope="col">Pan</th>
                   <th scope="col">Aadhar</th>
                   <th scope="col">Delete</th>
-                  <th scope="col">Update</th>
+                  <th scope="col">Profile</th>
                   <th scope="col">Add Image</th>
                 </tr>
               </thead>
@@ -178,7 +178,7 @@ function Home(props) {
         nextLabel="next >"
         onPageChange={handlePageClick}
         // initialPage={0}
-        forcePage={page == 1 ? 0 : page - 1}
+        forcePage={page === 1 ? 0 : page - 1}
         pageRangeDisplayed={5}
         pageCount={Math.ceil(count / 5 + 1)}
         marginPagesDisplayed={2}

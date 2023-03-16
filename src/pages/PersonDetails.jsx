@@ -130,7 +130,7 @@ function PersonDetails(props) {
 
   return (
     <div className="py-5">
-      <div className="container" id="page">
+      <div className="container">
         <div className="row">
           <div className="col-md-12">
             <div className="border p-3 rounded">
@@ -148,8 +148,8 @@ function PersonDetails(props) {
               {/* ***************************************************************** */}
               {/* <div>i am {id}</div> */}
               {person.length > 0 ? (
-                <div className="mt-5">
-                  <h5 className="mb-3">Person Information</h5>
+                <div className="mt-3">
+                  <h2 className="mb-4 text-center">Person Information</h2>
                   <ul className="list-group">
                     <li className="list-group-item">
                       <div className="justify-content-end">
@@ -210,7 +210,7 @@ function PersonDetails(props) {
                       <QueryBuilderIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
                       />
-                      {person[0].Created_Time}
+                      {new Date(person[0].Created_Time).toUTCString()}
                       <span className="float-end fw-lighter">Created On</span>
                     </li>
 
@@ -218,7 +218,7 @@ function PersonDetails(props) {
                       <QueryBuilderIcon
                         style={{ fontSize: "22px", marginRight: "8px" }}
                       />
-                      {person[0].Updated_Time}
+                      {new Date(person[0].Updated_Time).toUTCString()}
                       <span className="float-end fw-lighter">Updated On</span>
                     </li>
                   </ul>
@@ -244,19 +244,28 @@ function PersonDetails(props) {
                 <li className="mt-3 list-group-item">
                   <NavLink to={`/camera/${id}`}>
                     <button className="btn btn-primary">
-                      <CameraAltIcon /> Update Photo
+                      <CameraAltIcon
+                        style={{ fontSize: "22px", marginRight: "8px" }}
+                      />
+                      Update Photo
                     </button>
                   </NavLink>
                 </li>
                 <li className="mt-3 list-group-item">
                   <button className="btn btn-success" onClick={downloadData}>
-                    <DownloadIcon /> Download CSV
+                    <DownloadIcon
+                      style={{ fontSize: "22px", marginRight: "8px" }}
+                    />
+                    Download CSV
                   </button>
                 </li>
                 <li className="mt-3 list-group-item">
                   {/*    onClick={downloadPdf}*/}
                   <button className="btn btn-success" onClick={postUrlToApi}>
-                    <DownloadIcon /> Download PDF
+                    <DownloadIcon
+                      style={{ fontSize: "22px", marginRight: "8px" }}
+                    />
+                    Download PDF
                   </button>
                 </li>
               </ul>
