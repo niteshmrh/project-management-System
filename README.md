@@ -72,7 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Preview and Images
 
-## Home (Showing all person and three button `Delete`, `Details` and for `Camera` working as Named given)
+## Home (Showing all person and three button `Delete`, `profile` and for `Camera` working as Named given)
 <img src="https://github.com/niteshmrh/form/blob/f77e02e80967ee57a2866916f38830ca76ea0492/Home.png">
 
 ## Add person
